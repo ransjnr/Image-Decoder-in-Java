@@ -87,7 +87,6 @@ public class CustomGUI extends JFrame {
     }
 
         private void saveImage() {
-            // Implement your save functionality here
             try {
                 ImageIcon icon = (ImageIcon) imageLabel.getIcon();
                 Image image = icon.getImage();

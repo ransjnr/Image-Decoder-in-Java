@@ -5,7 +5,7 @@ import java.io.File;
 import java.util.Scanner;
 
 
-public class ImageGenerator {
+public class PictureMain {
 
   public static void main(String[] args) throws Exception {
 
