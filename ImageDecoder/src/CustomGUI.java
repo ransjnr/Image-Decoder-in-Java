@@ -11,8 +11,11 @@ public class CustomGUI extends JFrame {
 
     private JLabel imageLabel;
     private JMenuBar menuBar;
-    private JMenu fileMenu; 
-    private JMenuItem saveMenuItem;
+    private JMenu file;
+    private JMenu Settings; 
+    private JMenu Copyright; 
+    private JMenuItem saveMenuItem1;
+    private JMenuItem saveMenuItem2;
     private JButton zoomInButton;
     private JButton zoomOutButton; 
     private JLabel statusBar;
@@ -24,11 +27,17 @@ public class CustomGUI extends JFrame {
         // Menu Bar
         menuBar = new JMenuBar();
 
-        fileMenu = new JMenu("File");
-        saveMenuItem = new JMenuItem("Save");
-        fileMenu.add(saveMenuItem);
+        file = new JMenu("File");
+        Settings = new JMenu("Settings");
+        Copyright = new JMenu("Copyright");
+        saveMenuItem1 = new JMenuItem("Save");
+        saveMenuItem2 = new JMenuItem("Ransford Oppong");
+        file.add(saveMenuItem1);
+        Copyright.add(saveMenuItem2);
 
-        menuBar.add(fileMenu);
+        menuBar.add(file);
+        menuBar.add(Settings);
+        menuBar.add(Copyright);
         setJMenuBar(menuBar);
 
         // Buttons

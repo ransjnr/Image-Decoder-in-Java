@@ -1,3 +1,10 @@
+/*
+ * Created on Thu Feb 15 2024
+ *
+ * Index Number - 7084021
+ * Copyright (c) 2024 
+ */
+
 public class ErrorHandler {
 
   public static void validateDimensions(int width, int height) throws IllegalArgumentException {

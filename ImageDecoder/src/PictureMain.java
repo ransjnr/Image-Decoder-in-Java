@@ -1,33 +1,45 @@
-import javax.swing.*;
-import java.awt.*;
+/*
+ * Created on Thu Feb 15 2024
+ * Hosted privately on Github (https://ransjnr/image-decoder-in-java)
+ * Index Number - 7084021
+ * 
+ * Copyright (c) 2024 
+ * 
+ */
+
+
+//importing packages
+import java.util.Scanner;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.util.Scanner;
-
-
+//main class declaration
 public class PictureMain {
 
   public static void main(String[] args) throws Exception {
-
-    File file = new File("picture.txt");
-    Scanner scanner = new Scanner(file);
+    //read image file into project
+    File txtFile = new File("picture.txt");
+    Scanner scanner = new Scanner(txtFile);
+    //handle error with try and catch method
  try {  
+    //reading the width from the file
     int width = scanner.nextInt();
+    //reading the height from the file
     int height = scanner.nextInt();
-
+    //calling the validateDimensions error handling function from the ErrorHandle class
     ErrorHandler.validateDimensions(width, height);
-
+    //creating an object of the class PicturePlotter
     PicturePlotter plotter = new PicturePlotter(width, height);
 
-    int x = 0; 
-    int y = 0;
-
+    //starting position of plot counts
+    int x = 0, y = 0;
+    //conditions to check the normalization of the change in count and color with the loop
     while(true) {
+      //reading the count values
       int count = scanner.nextInt();
       if(count < 0) {
         break;
       }
-
+      //reading the color values
       int color = scanner.nextInt();
       plotter.plot(x, y, count, color);
 
@@ -37,16 +49,17 @@ public class PictureMain {
         y++;
       }
     }
-
+    //calling the method to display the custom GUI
     plotter.showImage();
       } catch (Exception e) {
-      ErrorHandler.handleUnexpectedError(e);
+      ErrorHandler.handleUnexpectedError(e); //checking unexpected errors
     }
   }
 
 
 }
 
+//class to plot the image
 class PicturePlotter {
 
   private BufferedImage image;
@@ -62,37 +75,23 @@ class PicturePlotter {
   }
 
   public void showImage() {
-    CustomGUI gui = new CustomGUI("Generated Image", image);
+    //calling the custom gui class 
+    CustomGUI gui = new CustomGUI("Ransford's Java Image Decoder", image);
   }
 
 private int colorToRGB(int color) {
 
+  //calling error handler to check valid color values
   int validColor = ErrorHandler.getValidColor(color);
 
   switch(color) {
-    case 0: return 0x000000; //black
-    case 1: return 0xFF0000; //red
+    //color display cases from 0-3
+    case 0: return 0xA52A2A; //brown
+    case 1: return 0x808080; //gray
     case 2: return 0x00FF00; //green
-    case 3: return 0x0000FF; //blue
-    case 4: return 0xFFFF00; //yellow
-    case 5: return 0xFF00FF; //magenta
-    case 6: return 0x00FFFF; //cyan
-    case 7: return 0xFFFFFF; //white
-    case 8: return 0xFFA500; //orange
-    case 9: return 0xA52A2A; //brown
-    case 10: return 0x808080; //gray
-    case 11: return 0xA0522D; //sienna
-    case 12: return 0x556B2F; //dark olive green
-    case 13: return 0x006400; //dark green
-    case 14: return 0x8B0000; //dark red 
-    case 15: return 0x4B0082; //indigo
-    case 16: return 0x2F4F4F; //dark slate gray
-    case 17: return 0x800000; //maroon
-    case 18: return 0x808000; //olive
-    case 19: return 0xC0C0C0; //silver
-    case 20: return 0x696969; //dim gray
+    case 3: return 0xA0522D; //sienna
   }
-  return 0; 
+    return 0; 
   }
 
 }
